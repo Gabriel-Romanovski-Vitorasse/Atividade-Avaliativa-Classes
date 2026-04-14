@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author alunolab10
- */
 public class Oraculo {
     private String nome;
     private Guerreiro warrior;
+    
+    void definirNome(String nome){
+        this.nome = nome;
+    }
     
     String prologoIntroducao(){
         return "teste";

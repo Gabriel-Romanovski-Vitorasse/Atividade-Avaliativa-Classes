@@ -11,5 +11,9 @@ public class Item {
         this.equipado = equipado;
     }
     
-    void ImprimirDados(){}
+    void ImprimirDados(){
+        System.out.println("Id do item: "+idItem);
+        System.out.println("Tipo do Item: "+tipoItem);
+        System.out.println("Equipado: "+equipado);
+    }
 }
