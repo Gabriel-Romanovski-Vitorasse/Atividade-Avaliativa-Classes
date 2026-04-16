@@ -6,6 +6,9 @@ void main(){
     Item item01 = new Item(01,"Arma", true);
     Item item02 = new Item(02,"Poca", true);
     
+    oc01.definirNome();
+    oc01.prologoIntroducao();
+    
     myBolsa.equipar(item01);
     myBolsa.equipar(item02);
     System.out.println("");
