@@ -6,8 +6,6 @@ void main(){
     Item item01 = new Item(01,"Arma", true);
     Item item02 = new Item(02,"Poca", true);
     
-    InOut.MsgDeInformacao("teste", oc01.definirNome(nome));
-    
     myBolsa.equipar(item01);
     myBolsa.equipar(item02);
     System.out.println("");
