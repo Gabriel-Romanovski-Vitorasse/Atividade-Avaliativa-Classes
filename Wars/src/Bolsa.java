@@ -1,20 +1,27 @@
+import Wars.InOut;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bolsa {
     private List<Item> listaItens = new ArrayList<>();
     private Item item;
-    int qtdeItens;
+    private int qtdeItens;
     
-    void equipar(Item i){
+    void adicionarItem (Item i){
         listaItens.add(i);
         qtdeItens = listaItens.size();
-        System.out.println("Item equipado na bolsa.");
-        System.out.println("Quantidade de Itens: "+qtdeItens);
+        InOut.MsgDeInformacao("Aviso: Item equipado na bolsa.", "Quantidade de Itens na bolsa: "+qtdeItens);
+    }
+    void equipar(Item i){
+        item = i;
+        item.equipado = true;
+        InOut.MsgDeAviso("Aviso", "O item "+item.idItem+" foi equipado.");
     }
     
     void desequipar(Item i){
-        listaItens.remove(i);
+        item = i;
+        item.equipado = false;
+        InOut.MsgDeAviso("Aviso", "O item "+item.idItem+" foi desequipado.");
     }
     
 }

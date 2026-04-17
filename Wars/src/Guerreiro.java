@@ -12,8 +12,8 @@ public class Guerreiro {
     protected void definirNome(){
         nome = InOut.leString("Qual é o seu nome Guerreiro: "+"");
     }
-    private int sortearVidas() {
-        return this.qtdVidas = 9 + (int)(Math.random() * 4);
+    int sortearVidas() {
+        return qtdVidas = 9 + (int)(Math.random() * 4);
     }
     
 }

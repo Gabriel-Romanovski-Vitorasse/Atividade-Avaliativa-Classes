@@ -7,10 +7,12 @@ public class Oraculo {
         this.nome = InOut.leString("De um nome para o oraculo: "+"");
     }
     
-    String prologoIntroducao(){
+    String prologoIntroducao(Guerreiro guerreiro){
+        warrior = guerreiro;
+        warrior.sortearVidas();
         warrior.definirNome();
         InOut.MsgSemIcone("Prologo de Introducao", "Olá "+warrior.nome+", sou o Oraculo "+this.nome+". "
-                + "Irei te acompanhar nessa jornada. Voce possui um total de "+warrior.qtdVidas);
+                + "Irei te acompanhar nessa jornada.\n\nVoce possui um total de "+warrior.qtdVidas+" vidas.");
         return "teste";
     }
     

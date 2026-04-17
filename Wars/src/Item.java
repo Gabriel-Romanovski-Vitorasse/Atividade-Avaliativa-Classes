@@ -1,7 +1,10 @@
+
+import Wars.InOut;
+
 public class Item {
-    private int idItem;
-    private String tipoItem;
-    private boolean equipado;
+    protected int idItem;
+    protected String tipoItem;
+    protected boolean equipado;
 
     public Item() {}
 
@@ -12,8 +15,6 @@ public class Item {
     }
     
     void ImprimirDados(){
-        System.out.println("Id do item: "+idItem);
-        System.out.println("Tipo do Item: "+tipoItem);
-        System.out.println("Equipado: "+equipado);
+        InOut.MsgSemIcone("Informacoes do Item", "Id do item: "+idItem+".\nTipo do Item: "+tipoItem+".\nEquipado: "+equipado);
     }
 }
