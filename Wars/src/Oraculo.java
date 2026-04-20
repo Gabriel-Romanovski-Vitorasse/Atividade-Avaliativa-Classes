@@ -24,16 +24,54 @@ public class Oraculo {
         return "Fatality. Warrior win!";
     }
     
-    boolean loadLevel01(){
-        return true;
+    boolean loadLevel01()
+    {
+        boolean Acerto = false;
+        InOut.MsgDeAviso("Nível 1", "Estamos adentrando no primeiro nível do Desafio. PREPARE-SE!");
+        InOut.MsgDeAviso("Nível 1", "Você deve acertar um número entre 1 e 100 para continuar!!!");
+        int numeroCerto = 1 + (int)(Math.random() * 100);
+        int numeroEsc;
+        System.out.println("TESTE: numero: " + numeroCerto);
+        do{
+        numeroEsc = InOut.leInt("SEU PALPITE:");
+        if(numeroEsc == numeroCerto){
+            InOut.MsgDeAviso("PARABENS!", "Você acertou o número. Prossiga para a próxima fase.");
+            Acerto = true;
+        }
+        else{
+            if(numeroEsc > numeroCerto) InOut.MsgDeAviso("ERRADO", "O número é menor que seu palpite.");
+            else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
+            warrior.ManipularVidas(1);
+        }  
+        }while(warrior.qtdVidas > 0 && !Acerto);
+         
+        return true;   
     }
     
     boolean loadLevel02(){
         return true;
     }
+
+    public boolean SemVidas(){
+        InOut.MsgDeAviso("VOCE ESTA SEM VIDAS!", "O Oraculo ainda te dara chances de viver.\n Mas para isso, tem de pedir misericordia.");
+        if(this.decidirVidaExtra(InOut.leString("Clame por misericordia!"))){
+            warrior.ManipularVidas(2);
+            return true;
+        }
+        else return false;
+    }
     
-    boolean decidirVidaExtra(String frase){
-        return true;
+    private boolean decidirVidaExtra(String frase){
+        int qtdPalavras;
+        String[] Palavras;
+        Palavras = frase.trim().split("\\s+");
+        qtdPalavras = Palavras.length;
+        return qtdPalavras >= 5;
+        
+    }
+    public void FimGame(){
+        
+        InOut.MsgDeInformacao("FIM DE JOGO", "Sua condição: VITÓRIA!");
     }
     
 }
