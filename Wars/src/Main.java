@@ -29,18 +29,13 @@ void main(){
         }
         else{
             InOut.MsgDeAviso("Ah, não!", "Você não clamou o suficiente...");
-            oc01.FimGame();
+            oc01.prologoPerdedor();
         }
     }
     if(!guerreiroDerrotado) oc01.loadLevel02();
-    if(g01.qtdVidas == 0){
-        guerreiroDerrotado = !oc01.SemVidas();
-    }
+    //if(g01.qtdVidas == 0){ guerreiroDerrotado = !oc01.SemVidas(); }
     //if(!guerreiroDerrotado) oc01.loadLevel03();
-    if(guerreiroDerrotado){
-        oc01.prologoPerdedor();
-        
-    }
+    //if(guerreiroDerrotado){ oc01.prologoPerdedor(); }
     
     
 }

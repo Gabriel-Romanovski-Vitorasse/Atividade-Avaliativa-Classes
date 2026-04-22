@@ -17,6 +17,9 @@ public class Oraculo {
     }
     
     String prologoPerdedor(){
+        InOut.MsgSemIcone("Prologo Perdedor", "Eh uma pena que a nossa jornada "
+                + "acabou Guerreiro "+warrior.nome+", deveria ter tomado mais "
+                        + "cuidado.\nAte uma proxima!");
         return "You Lose";
     }
     
@@ -39,9 +42,9 @@ public class Oraculo {
             Acerto = true;
         }
         else{
-            if(numeroEsc > numeroCerto) InOut.MsgDeAviso("ERRADO", "O número é menor que seu palpite.");
-            else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
             warrior.ManipularVidas(1);
+            if(numeroEsc > numeroCerto) InOut.MsgDeAviso("ERRADO", "O número é menor que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
+            else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
         }  
         }while(warrior.qtdVidas > 0 && !Acerto);
          
