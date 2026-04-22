@@ -13,29 +13,6 @@ void main(){
     oc01.definirNome();
     oc01.prologoIntroducao(g01);
     
-    myBolsa.adicionarItem(item01);
-    myBolsa.adicionarItem(item02);
-    
-    item01.ImprimirDados();
-    myBolsa.equipar(item01);
-    item01.ImprimirDados();
-    
     oc01.loadLevel01();
-    if(g01.qtdVidas == 0){
-        if(oc01.SemVidas()){
-            InOut.MsgDeInformacao("PARABENS!", "Suas presses forama atendidas. Vida extra concedida.");
-            InOut.MsgDeInformacao("VIDA EXTRA CONCEDIDA", "Vidas: " + g01.qtdVidas);
-            g01.ManipularVidas(2);
-        }
-        else{
-            InOut.MsgDeAviso("Ah, não!", "Você não clamou o suficiente...");
-            oc01.prologoPerdedor();
-        }
-    }
-    if(!guerreiroDerrotado) oc01.loadLevel02();
-    //if(g01.qtdVidas == 0){ guerreiroDerrotado = !oc01.SemVidas(); }
-    //if(!guerreiroDerrotado) oc01.loadLevel03();
-    //if(guerreiroDerrotado){ oc01.prologoPerdedor(); }
-    
-    
+    oc01.loadLevel2();
 }

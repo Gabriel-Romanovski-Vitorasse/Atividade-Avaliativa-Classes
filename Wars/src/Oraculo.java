@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import Wars.InOut;
 public class Oraculo {
     private String nome;
@@ -30,7 +31,7 @@ public class Oraculo {
     boolean loadLevel01()
     {
         boolean Acerto = false;
-        InOut.MsgDeAviso("Nível 1", "Estamos adentrando no primeiro nível do Desafio. PREPARE-SE!");
+        InOut.MsgDeAviso("Nível 1", "Estamos adentrando no primeiro desafio da jornada. PREPARE-SE!");
         InOut.MsgDeAviso("Nível 1", "Você deve acertar um número entre 1 e 100 para continuar!!!");
         int numeroCerto = 1 + (int)(Math.random() * 100);
         int numeroEsc;
@@ -47,12 +48,46 @@ public class Oraculo {
             else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
         }  
         }while(warrior.qtdVidas > 0 && !Acerto);
-         
+                // Resultado final
+        if (warrior.qtdVidas > 0) {
+            InOut.MsgSemIcone("Menu", "Parabéns, você sobreviveu ao nível!");
+        } else {
+            VidaExtra();
+        }
         return true;   
     }
     
-    boolean loadLevel02(){
-        return true;
+    boolean loadLevel2() {
+        String resposta;
+
+        InOut.MsgDeAviso("Nível 2", "Estamos adentrando no segundo desafio da jornada. PREPARE-SE!");
+        
+        resposta = InOut.leString("Primeira Carada. \nO que é, o que é? Quanto mais você tira, maior fica?");
+        if (!resposta.equalsIgnoreCase("buraco")) {
+            warrior.ManipularVidas(1);
+            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+        }
+
+        resposta = InOut.leString("Segunda Carada. \nO que é, o que é? Anda sem pernas e chora sem olhos?");
+        if (!resposta.equalsIgnoreCase("nuvem")) {
+            warrior.ManipularVidas(1);
+            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+        }
+
+        resposta = InOut.leString("Terceira Carada. \nO que é, o que é? Tem dentes mas não morde?");
+        if (!resposta.equalsIgnoreCase("pente")) {
+            warrior.ManipularVidas(1);
+            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+        }
+
+        // Resultado final
+        if (warrior.qtdVidas > 0) {
+            InOut.MsgSemIcone("Menu", "Parabéns, você sobreviveu ao nível!");
+            return true;
+        } else {
+            VidaExtra();
+            return false;
+        }
     }
 
     public boolean SemVidas(){
@@ -62,6 +97,19 @@ public class Oraculo {
             return true;
         }
         else return false;
+    }
+    
+    private boolean VidaExtra(){
+        if(SemVidas()){
+            InOut.MsgDeInformacao("PARABENS!", "Suas presses forama atendidas. Vida extra concedida.");
+            InOut.MsgDeInformacao("VIDA EXTRA CONCEDIDA", "Vidas: " + warrior.qtdVidas);
+            warrior.ManipularVidas(2);
+        }
+        else{
+            InOut.MsgDeAviso("Ah, não!", "Você não clamou o suficiente...");
+            prologoPerdedor();
+        }
+        return true;
     }
     
     private boolean decidirVidaExtra(String frase){
