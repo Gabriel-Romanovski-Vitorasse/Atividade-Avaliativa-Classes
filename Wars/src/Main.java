@@ -1,6 +1,5 @@
-//import Wars.InOut;
-
 void main(){
+    ReproduzirSom.tocarAudio("C:\\Users\\ADM\\Documents\\GitHub\\Atividade-Avaliativa-Classes\\Wars\\midia\\adventure.wav.wav");
     Oraculo oc01 = new Oraculo();
     Guerreiro g01 =  new Guerreiro();
     Bolsa myBolsa = new Bolsa();

@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import Wars.InOut;
 public class Oraculo {
     private String nome;
