@@ -1,4 +1,4 @@
-import Wars.InOut;
+//import Wars.InOut;
 
 void main(){
     Oraculo oc01 = new Oraculo();
@@ -6,8 +6,7 @@ void main(){
     Bolsa myBolsa = new Bolsa();
     Item item01 = new Item(01,"Arma", false);
     Item item02 = new Item(02,"Poca", true);
-    
-    boolean guerreiroDerrotado = false;
+  
     
     
     oc01.definirNome();
