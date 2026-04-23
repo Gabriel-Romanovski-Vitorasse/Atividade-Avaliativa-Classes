@@ -1,5 +1,7 @@
 package Wars;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /** 
  * A classe <i>leDadosWin</i> permite a leitura de dados de tipos nativos e de   
@@ -271,7 +273,7 @@ public class InOut {
 	public static void MsgSemIcone(String cabecalho, String frase){
 		JOptionPane.showMessageDialog(null, frase, cabecalho, JOptionPane.PLAIN_MESSAGE);
 	}
-	
+        
 	/**
 	 * Este metodo foi criado para mandar uma mensagem com o icone de
 	 * AVISO
@@ -283,6 +285,24 @@ public class InOut {
 		JOptionPane.showMessageDialog(null, frase, cabecalho, JOptionPane.WARNING_MESSAGE);
 	}
 	
+        public static void MsgComFundo(String titulo, String texto) { 
+        
+        // 2. Colocamos o caminho fixo (hardcoded) direto aqui dentro:
+        String caminhoDaCaverna = "../Wars/Midia/oraculo.png";
+        ImageIcon fundo = new ImageIcon(caminhoDaCaverna);
+        
+        // O resto continua igualzinho!
+        String textoFormatado = "<html><div style='color: white; font-size: 16px; text-align: center; padding: 20px;'>" 
+                                + texto.replace("\n", "<br>") 
+                                + "</div></html>";
+        
+        JLabel painel = new JLabel(textoFormatado, fundo, JLabel.CENTER);
+        painel.setHorizontalTextPosition(JLabel.CENTER);
+        painel.setVerticalTextPosition(JLabel.CENTER);
+
+        JOptionPane.showMessageDialog(null, painel, titulo, JOptionPane.PLAIN_MESSAGE);
+}
+        
 	
 /**
  * Exemplos...

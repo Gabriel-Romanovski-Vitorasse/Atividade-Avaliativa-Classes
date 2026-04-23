@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 
 public class ReproduzirSom {
     
-    public static void tocarAudio(String caminhoDoArquivo) {
+    public static void tocar(String caminhoDoArquivo) {
         try {
             File audioFile = new File(caminhoDoArquivo);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);

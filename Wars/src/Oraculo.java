@@ -3,7 +3,7 @@ import Wars.InOut;
 public class Oraculo {
     private String nome;
     private Guerreiro warrior;
-    private boolean cheat = false; // Ativa ou desativa as trapaças pra fim de teste
+    private boolean cheat = true; // Ativa ou desativa as trapaças pra fim de teste
     private int vidasperdidas = 0;
     ArrayList<Integer> respostasLV1 = new ArrayList<>();
     ArrayList<String> respostasLV2 = new ArrayList<>();
@@ -16,7 +16,7 @@ public class Oraculo {
         warrior = guerreiro;
         warrior.sortearVidas();
         warrior.definirNome();
-        InOut.MsgSemIcone("Prologo de Introducao", "Olá "+warrior.nome+", sou o Oraculo "+this.nome+". "
+        InOut.MsgComFundo("Prologo de Introducao", "Olá "+warrior.nome+", sou o Oraculo "+this.nome+". "
                 + "Irei te acompanhar nessa jornada.\n\nVoce possui um total de "+warrior.qtdVidas+" vidas.");
         return "teste";
     }
@@ -42,26 +42,30 @@ public class Oraculo {
         int numeroEsc;
         if(cheat) System.out.println("número correto " + numeroCerto);
         do{
-        numeroEsc = InOut.leInt("SEU PALPITE:");
-        respostasLV1.add(numeroEsc);
-        if(numeroEsc == numeroCerto){
-            InOut.MsgDeAviso("PARABENS!", "Você acertou o número. Prossiga para a próxima fase.");
-            Acerto = true;
-        }
-        else{
-            warrior.ManipularVidas(1);
-            if(numeroEsc > numeroCerto) InOut.MsgDeAviso("ERRADO", "O número é menor que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
-            else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
-            vidasperdidas++;
-        }  
+            numeroEsc = InOut.leInt("SEU PALPITE:");
+            respostasLV1.add(numeroEsc);
+            if(numeroEsc == numeroCerto){
+                InOut.MsgDeAviso("PARABENS!", "Você acertou o número. Prossiga para a próxima fase.");
+                Acerto = true;
+            }
+            else{
+                warrior.ManipularVidas(1);
+                if(numeroEsc > numeroCerto) InOut.MsgDeAviso("ERRADO", "O número é menor que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
+                else InOut.MsgDeAviso("ERRADO", "O número é maior que seu palpite.\n VIDAS RESTANTES: " + warrior.qtdVidas);
+                vidasperdidas++;
+            }  
         }while(warrior.qtdVidas > 0 && !Acerto);
-                // Resultado final
-        
+        if(warrior.qtdVidas <= 0){
+            if (SemVidas()) {
+                InOut.MsgDeAviso("VIDA EXTRA!", "Você conseguiu uma vida extra");
+            }
+            else FimGame(prologoPerdedor());
+        }
         return true;
            
     }
     
-    boolean loadLevel2() {
+    boolean loadLevel02() {
         String resposta;
         boolean Ac1 = false;
         boolean Ac2 = false;
@@ -69,56 +73,61 @@ public class Oraculo {
         InOut.MsgDeAviso("Nível 2", "Estamos adentrando no segundo desafio da jornada. PREPARE-SE!");
         if(cheat)System.out.println("Charas: Buraco, Nuvem, Pente");
        do{
-            
-        if(!Ac1){
-            resposta = InOut.leString("Primeira Carada. \nO que é, o que é? Quanto mais você tira, maior fica?");
-            if (!resposta.equalsIgnoreCase("buraco")) {
-            warrior.ManipularVidas(1);
-            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
-            respostasLV2.add(resposta);
-            vidasperdidas++;
-        }
-        else{
-            InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
-            Ac1 = true;
-        }
-        }
+            if(!Ac1){
+                resposta = InOut.leString("Primeira Carada. \nO que é, o que é? Quanto mais você tira, maior fica?");
+                if (!resposta.equalsIgnoreCase("buraco")) {
+                warrior.ManipularVidas(1);
+                InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+                respostasLV2.add(resposta);
+                vidasperdidas++;
+            }
+            else{
+                InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
+                Ac1 = true;
+            }
+            }
 
-        if(!Ac2){
-            resposta = InOut.leString("Segunda Charada. \nO que é, o que é? Anda sem pernas e chora sem olhos?");
-        if (!resposta.equalsIgnoreCase("nuvem")) {
-            warrior.ManipularVidas(1);
-            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
-            respostasLV2.add(resposta);
-            vidasperdidas++;
-        }
-        else{
-            InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
-            Ac2 = true;
-        }
-        }
-        
-        if(!Ac3){
-           resposta = InOut.leString("Terceira Carada. \nO que é, o que é? Tem dentes mas não morde?");
-        if (!resposta.equalsIgnoreCase("pente")) {
-            warrior.ManipularVidas(1);
-            InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
-            respostasLV2.add(resposta);
-            vidasperdidas++;
-        }
-        else{
-            InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
-            Ac3 = true;
-        }
-        }
+            if(!Ac2){
+                resposta = InOut.leString("Segunda Charada. \nO que é, o que é? Anda sem pernas e chora sem olhos?");
+            if (!resposta.equalsIgnoreCase("nuvem")) {
+                warrior.ManipularVidas(1);
+                InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+                respostasLV2.add(resposta);
+                vidasperdidas++;
+            }
+            else{
+                InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
+                Ac2 = true;
+            }
+            }
 
-        
+            if(!Ac3){
+               resposta = InOut.leString("Terceira Carada. \nO que é, o que é? Tem dentes mas não morde?");
+            if (!resposta.equalsIgnoreCase("pente")) {
+                warrior.ManipularVidas(1);
+                InOut.MsgDeAviso("Resposta Incorreta.", "Errou! Vidas restantes: " + warrior.qtdVidas);
+                respostasLV2.add(resposta);
+                vidasperdidas++;
+            }
+            else{
+                InOut.MsgDeAviso("Resposta correta!", "Vamos para a próxima!");
+                Ac3 = true;
+            }
+            }
+
+
        }while(warrior.qtdVidas > 0 && !Ac1 && !Ac2 && !Ac3);
-
-        return true;
+        
+       if(warrior.qtdVidas <= 0){
+            if (SemVidas()) {
+                InOut.MsgDeAviso("VIDA EXTRA!", "Você conseguiu uma vida extra");
+            }
+            else FimGame(prologoPerdedor());
+        }
+       return true;
     }
     
-    public boolean LoadLevel3(){
+    public boolean LoadLevel03(){
         int[] sequencia = {0 + (int)(Math.random() * 10), 0 + (int)(Math.random() * 10), 0 + (int)(Math.random() * 10)};
         int resp;
         boolean Ac1 = false;
@@ -132,7 +141,6 @@ public class Oraculo {
             
           if(!Ac1){
             if (resp == sequencia[0]){
-                System.out.println("teste: " + sequencia[0]);
               InOut.MsgDeInformacao("NÍVEL 3", "VOCÊ ACERTOU! Número: " + sequencia[0]);
               respostasLV3.add(resp);
               Ac1 = true;
@@ -174,6 +182,12 @@ public class Oraculo {
             }
          }
        }while(warrior.qtdVidas > 0 && !(Ac1 && Ac2 && Ac3));
+        if(warrior.qtdVidas > 0){
+            FimGame(prologoVencedor());
+        }
+        else{
+            FimGame(prologoPerdedor());
+        }
        return true;
     }
 
