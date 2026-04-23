@@ -8,5 +8,3 @@
     //if(g01.qtdVidas == 0){ guerreiroDerrotado = !oc01.SemVidas(); }
     //if(!guerreiroDerrotado) oc01.loadLevel03();
     //if(guerreiroDerrotado){ oc01.prologoPerdedor(); }
-
-    //boolean guerreiroDerrotado = false;
