@@ -7,7 +7,7 @@ public class Main {
         Guerreiro g01 = new Guerreiro();
         Bolsa myBolsa = new Bolsa();
         Item item01 = new Item(1, "Arma", false);
-        Item item02 = new Item(2, "Poca", true);
+        Item item02 = new Item(2, "Pocao", true);
         
         boolean jogando = true;
         g01.myBolsa = myBolsa;

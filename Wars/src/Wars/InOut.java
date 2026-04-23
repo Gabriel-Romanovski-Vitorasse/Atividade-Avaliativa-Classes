@@ -292,7 +292,7 @@ public class InOut {
         ImageIcon fundo = new ImageIcon(caminhoDaCaverna);
         
         // O resto continua igualzinho!
-        String textoFormatado = "<html><div style='color: white; font-size: 16px; text-align: center; padding: 20px;'>" 
+        String textoFormatado = "<html><div style='color: white; font-size: 16px; text-align: center; padding: 30px;'>" 
                                 + texto.replace("\n", "<br>") 
                                 + "</div></html>";
         
