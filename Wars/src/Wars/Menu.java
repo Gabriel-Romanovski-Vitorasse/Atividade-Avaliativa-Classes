@@ -4,7 +4,7 @@ public class Menu {
     public static int mostrarMenuJogo() {
         
         // 1. As opções ficam aqui dentro, protegidas
-        String[] acoes = {"Iniciar o Jogo", "Editar Personagem", "Sair"};
+        String[] acoes = {"Iniciar o Jogo", "Menu de Itens", "Sair"};
 
         // 2. O menu é chamado e guardamos a resposta
         int acaoEscolhida = InOut.MenuBotoes(
