@@ -303,7 +303,21 @@ public class InOut {
         JOptionPane.showMessageDialog(null, painel, titulo, JOptionPane.PLAIN_MESSAGE);
 }
         
-	
+	public static int MenuBotoes(String titulo, String texto, String[] opcoes) {
+		int escolha = JOptionPane.showOptionDialog(
+				null, 
+				texto, 
+				titulo, 
+				JOptionPane.DEFAULT_OPTION, 
+				JOptionPane.QUESTION_MESSAGE, 
+				null,      // Aqui você também poderia colocar um ImageIcon, se quisesse!
+				opcoes,    // O array com os botões
+				opcoes[0]  // Qual botão vem "selecionado" por padrão
+		);
+		
+		return escolha;
+	}
+        
 /**
  * Exemplos...
  * @param args : Entrada de dados do cmd
