@@ -13,43 +13,42 @@ public class Bolsa {
     }
     void EquiparPeloId(){
         int idDesejado = InOut.leInt("Digite o ID do item que deseja equipar:");
-        
         boolean itemEncontrado = false;
         for (Item i : listaItens) {
-            if (i.idItem == idDesejado) {
-                item = i;
-                item.equipado = true;
-                
-                InOut.MsgDeAviso("Aviso", "O item " + item.idItem + " (" + item.tipoItem + ") foi equipado.");
+            if (i.idItem == idDesejado) { 
                 itemEncontrado = true;
+                if (i.equipado) InOut.MsgDeAviso("Aviso", "O item " + i.idItem + " (" + i.tipoItem + ") ja esta equipado.");
+                else {
+                    item = i;
+                    item.equipado = true;
+                    InOut.MsgDeInformacao("Sucesso", "O item " + item.idItem + " (" + item.tipoItem + ") foi equipado!");
+                }
                 break; 
             }
         }
-        if (!itemEncontrado)
-            InOut.MsgDeErro("Erro", "Nenhum item com esse ID foi encontrado na sua bolsa.");
+        if (!itemEncontrado) InOut.MsgDeErro("Erro", "Nenhum item com esse ID foi encontrado na sua bolsa.");
     }
     
     void DesequiparPeloId(){
         int idDesejado = InOut.leInt("Digite o ID do item que deseja equipar:");
-        
         boolean itemEncontrado = false;
         for (Item i : listaItens) {
-            if (i.idItem == idDesejado) {
-                item = i;
-                item.equipado = false;
-                
-                InOut.MsgDeAviso("Aviso", "O item " + item.idItem + " (" + item.tipoItem + ") foi equipado.");
+            if (i.idItem == idDesejado) { 
                 itemEncontrado = true;
+                if (i.equipado != false) {
+                    item = i;
+                    item.equipado = false;
+                    InOut.MsgDeInformacao("Sucesso", "O item " + item.idItem + " (" + item.tipoItem + ") foi desequipado!");
+                } else InOut.MsgDeAviso("Aviso", "O item " + i.idItem + " (" + i.tipoItem + ") ja esta desequipado.");
                 break; 
             }
         }
-        if (!itemEncontrado)
-            InOut.MsgDeErro("Erro", "Nenhum item com esse ID foi encontrado na sua bolsa.");
+        if (!itemEncontrado) InOut.MsgDeErro("Erro", "Nenhum item com esse ID foi encontrado na sua bolsa.");
     }
     
     public void mostrarInventario() {
         if (listaItens.isEmpty()) {
-            InOut.MsgDeAviso("Bolsa", "A sua bolsa está completamente vazia!");
+            InOut.MsgDeAviso("Bolsa", "A sua bolsa está vazia!");
             return;
         }
         String textoInventario = "Estes são os itens na sua bolsa:\n\n";
