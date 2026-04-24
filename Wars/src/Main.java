@@ -7,7 +7,9 @@ public class Main {
         Guerreiro g01 = new Guerreiro();
         Bolsa myBolsa = new Bolsa();
         Item item01 = new Item(1, "Arma", false);
-        Item item02 = new Item(2, "Pocao", true);
+        Item item02 = new Item(2, "Pocao", false);
+        myBolsa.adicionarItem(item01);
+        myBolsa.adicionarItem(item02);
         
         boolean jogando = true;
         g01.myBolsa = myBolsa;
@@ -15,19 +17,19 @@ public class Main {
             switch (Menu.mostrarMenuJogo()) {
                 case 0 -> {
                     oc01.definirNome();
-                    ReproduzirSom.tocar("../Wars/Midia/adventure.wav");
+                    //ReproduzirSom.tocar("../Wars/Midia/adventure.wav");
                     oc01.prologoIntroducao(g01);
                     oc01.loadLevel01();
                     oc01.loadLevel02();
                     oc01.LoadLevel03();
                 }
                 case 1 -> {
-                    myBolsa.adicionarItem(item01);
-                    myBolsa.adicionarItem(item02);
-
-                    item01.ImprimirDados();
-                    myBolsa.equipar(item01);
-                    item01.ImprimirDados();
+                    switch(Menu.mostrarMenuItens()){
+                        case 0 ->{myBolsa.mostrarInventario();}
+                        case 1 ->{myBolsa.EquiparPeloId();}
+                        case 2 ->{myBolsa.DesequiparPeloId();}
+                        default ->{}
+                    }
                 }
                 case 2 -> {
                     InOut.MsgSemIcone("Fim", "Obrigado por jogar!");
