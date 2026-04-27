@@ -3,7 +3,7 @@ import Wars.InOut;
 public class Oraculo {
     private String nome;
     private Guerreiro warrior;
-    private boolean cheat = true; // Ativa ou desativa as trapaças pra fim de teste
+    private boolean cheat = false; // Ativa ou desativa as trapaças pra fim de teste
     private int vidasperdidas = 0;
     ArrayList<Integer> respostasLV1 = new ArrayList<>();
     ArrayList<String> respostasLV2 = new ArrayList<>();
@@ -14,7 +14,8 @@ public class Oraculo {
     
     String prologoIntroducao(Guerreiro guerreiro){
         warrior = guerreiro;
-        warrior.sortearVidas();
+        if(warrior.myBolsa.acharItem() == 2) warrior.qtdVidas = warrior.sortearVidas() + 2;
+        else warrior.sortearVidas();
         warrior.definirNome();
         InOut.MsgComFundo("Prologo de Introducao", "Olá "+warrior.nome+", sou o Oraculo "+this.nome+". "
                 + "Irei te acompanhar nessa jornada.\n\nVoce possui um total de "+warrior.qtdVidas+" vidas.");
@@ -29,7 +30,7 @@ public class Oraculo {
     }
     
     String prologoVencedor(){
-        InOut.MsgSemIcone("VITÓRIA!", "Parabéns! Você conseguiu!");
+        InOut.MsgSemIcone("VITÓRIA!", "Parabéns! Você conseguiu! Voce conseguiu superar todos os desafios!");
         return "vitoria";
     }
     

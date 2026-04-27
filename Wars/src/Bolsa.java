@@ -61,4 +61,12 @@ public class Bolsa {
         InOut.MsgSemIcone("Inventário do Guerreiro", textoInventario);
     }
     
+    public int acharItem() {
+        int id_achado = 0;
+        for (Item i : listaItens) {
+            if (i.equipado) id_achado = i.idItem;
+        }
+        return id_achado;
+    }
+    
 }

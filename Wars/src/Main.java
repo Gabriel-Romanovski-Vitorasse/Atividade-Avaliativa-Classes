@@ -7,7 +7,7 @@ public class Main {
         Guerreiro g01 = new Guerreiro();
         Bolsa myBolsa = new Bolsa();
         Item item01 = new Item(1, "Arma", false);
-        Item item02 = new Item(2, "Pocao", false);
+        Item item02 = new Item(2, "Pocao de Vida", false);
         myBolsa.adicionarItem(item01);
         myBolsa.adicionarItem(item02);
         
@@ -16,8 +16,8 @@ public class Main {
         while (jogando) {
             switch (Menu.mostrarMenuJogo()) {
                 case 0 -> {
+                    ReproduzirSom.tocar("../Wars/Midia/adventure.wav");
                     oc01.definirNome();
-                    //ReproduzirSom.tocar("../Wars/Midia/adventure.wav");
                     oc01.prologoIntroducao(g01);
                     oc01.loadLevel01();
                     oc01.loadLevel02();
